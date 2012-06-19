@@ -1,0 +1,4 @@
+<layers>
+    <layer name="collective.quickaccess"
+           interface="collective.quickaccess.browser.interfaces.ILayer" />
+</layers>
