@@ -7,25 +7,18 @@
       interface=".interfaces.ILayer"
       name="collective.quickaccess"
       />
-  
-  
-  <!-- EXAMPLE:
+      
   <browser:viewlet
-      name="collective.someviewlet"
-      manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
-      class=".viewlets.MyViewlet"
-      layer=".interfaces.ILayer"
-      permission="zope2.View"
-      />
-  <include package="plone.app.contentmenu" />
+        name="collective.quickaccess.bar"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".quickaccess.bar"
+        permission="zope2.View"
+        />
   <browser:page
-      name="myview"
-      menu="plone_displayviews"
-      title="Galleria"
-      class=".myfile.MyView"
+      for="*"
+      name="qa-manage"
+      class=".quickaccess.QaManageForm"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
-  -->
-
 </configure>

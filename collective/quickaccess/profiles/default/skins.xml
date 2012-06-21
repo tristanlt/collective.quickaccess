@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+
+ <object name="collective_quickaccess"
+    meta_type="Filesystem Directory View"
+    directory="collective.quickaccess:skins/collective_quickaccess_styles"/>
+
+ <skin-path name="*">
+  <layer name="collective_quickaccess_styles" insert-after="custom"/>
+ </skin-path>
+
+</object>

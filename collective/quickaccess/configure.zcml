@@ -11,6 +11,8 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <cmf:registerDirectory name="collective_quickaccess_styles"/>
+
   <genericsetup:registerProfile
       name="default"
       title="collective.quickaccess"
@@ -20,5 +22,6 @@
       />
   <include package=".upgrades" />
 
+  <adapter factory=".annotationmgr.AnnotationManager" />
 
 </configure>

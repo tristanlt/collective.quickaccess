@@ -1,0 +1,16 @@
+<span tal:omit-tag="python:True" tal:condition="view/activate">
+
+<div id="quickaccess">
+	<ul class="quickaccess-menu">
+		<li class="quickaccess-message"> <span tal:omit-tag="python:True" tal:content="view/qatext"></span> </li>
+		<span tal:omit-tag="python: True"  tal:repeat="link view/qaLinksList">
+			<li class="quickaccess-item">
+				<a tal:attributes="href link/url; alt link/link">
+					<span tal:omit-tag="python:True" tal:content="link/link"></span>
+				</a>
+			</li>
+		</span>
+	</ul>
+</div>
+
+</span>
