@@ -11,7 +11,7 @@
 
   <i18n:registerTranslations directory="locales" />
 
-  <cmf:registerDirectory name="collective_quickaccess_styles"/>
+  <cmf:registerDirectory name="collective_quickaccess"/>
 
   <genericsetup:registerProfile
       name="default"

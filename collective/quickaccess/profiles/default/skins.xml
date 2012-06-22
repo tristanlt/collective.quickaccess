@@ -3,10 +3,10 @@
 
  <object name="collective_quickaccess"
     meta_type="Filesystem Directory View"
-    directory="collective.quickaccess:skins/collective_quickaccess_styles"/>
+    directory="collective.quickaccess:skins/collective_quickaccess"/>
 
  <skin-path name="*">
-  <layer name="collective_quickaccess_styles" insert-after="custom"/>
+  <layer name="collective_quickaccess" insert-after="custom"/>
  </skin-path>
 
 </object>
