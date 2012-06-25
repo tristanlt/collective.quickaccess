@@ -17,21 +17,28 @@ from collective.quickaccess.annotationmgr import IAnnotationManager
 class bar(ViewletBase):
     render = ViewPageTemplateFile('quickaccess.pt')
     def update(self):
-            an = IAnnotationManager(self.context)
-            content=self.readQA(self.context)
-            if content['qatext'] == None:
-                content['qatext'] = ''
-            if content['qalinks'] == None:
-                content['qalinks'] = ''
-            if content['qalinks'] != '':
-                self.activate=True
-                self.qaLinksList=[]
-                self.qaherit=content['qaherit']
-                self.qatext=content['qatext']
-                for linkline in content['qalinks'].split("\n"):
-                    link=linkline.split(';')[0]
-                    url=linkline.split(';')[1]
-                    self.qaLinksList.append({'link':link,'url':url})
+            self.activate=True
+            try:
+                an = IAnnotationManager(self.context)
+            except:
+                self.activate=False
+            if self.activate:
+                content=self.readQA(self.context)
+                if content['qatext'] == None:
+                    content['qatext'] = ''
+                if content['qalinks'] == None:
+                    content['qalinks'] = ''
+                if content['qalinks'] != '':
+                    self.activate=True
+                    self.qaLinksList=[]
+                    self.qaherit=content['qaherit']
+                    self.qatext=content['qatext']
+                    for linkline in content['qalinks'].split("\n"):
+                        link=linkline.split(';')[0]
+                        url=linkline.split(';')[1]
+                        self.qaLinksList.append({'link':link,'url':url})
+                else:
+                    self.activate=False
             else:
                 self.activate=False
 
