@@ -43,26 +43,34 @@ class bar(ViewletBase):
                 self.activate=False
 
     def readQA(self, object2read):
-            an = IAnnotationManager(object2read)
-            isAnnotation=True
+            annotable = True
             try:
-                content = an.read()
+                an = IAnnotationManager(object2read)
             except:
-                isAnnotation=False
-                
-            if isAnnotation:
-                # CAS d'arrive au repertoire racine
-                if object2read.id =='Plone' and content['qalinks'] != '':
-                    return content
-                if content['qaherit'] == True:
-                    return self.readQA(aq_inner(object2read).aq_parent)
+                annotable = False
+            if annotable:
+                isAnnotation=True
+                try:
+                    content = an.read()
+                except:
+                    isAnnotation=False
+                    
+                if isAnnotation:
+                    # CAS d'arrive au repertoire racine
+                    if object2read.id =='Plone' and content['qalinks'] != '':
+                        return content
+                    if content['qaherit'] == True:
+                        return self.readQA(aq_inner(object2read).aq_parent)
+                    else:
+                        return content
                 else:
-                    return content
+                    if object2read.id =='Plone':
+                        content={'qaherit':False,'qatext':'','qalinks':''}
+                        return content
+                    return self.readQA(aq_inner(object2read).aq_parent)
             else:
-                if object2read.id =='Plone':
-                    content={'qaherit':False,'qatext':'','qalinks':''}
-                    return content
-                return self.readQA(aq_inner(object2read).aq_parent)
+                content={'qaherit':False,'qatext':'','qalinks':''}
+                return content
 
 class IQuickAccessManage(interface.Interface):
     """metadata form"""
