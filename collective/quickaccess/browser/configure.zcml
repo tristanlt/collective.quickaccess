@@ -19,6 +19,6 @@
       name="qa-manage"
       class=".quickaccess.QaManageForm"
       layer=".interfaces.ILayer"
-      permission="zope2.View"
+      permission="zope2.ManageProperties"
       />
 </configure>
